@@ -5,8 +5,9 @@ Twetter::Application.routes.draw do
 
   authenticated :user do
     resources :follows, :except => [:new, :edit, :show, :update]
+    resources :retwets, :only => [:create, :destroy]
     resources :twets, :except => [:new, :edit, :show, :update]
-    get ':username', :to => 'twets#index', :as => :profile
+  #  get ':username', :to => 'twets#index', :as => :profile
     root :to => 'follows#index', :as => :user_root
   end
 
